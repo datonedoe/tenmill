@@ -1,0 +1,13 @@
+[
+{
+    "question": "Former astronaut Ellen Ochoa says that although she doesn't have a definite idea of when it might happen, she _______ that humans will someday need to be able to live in other environments than those found on Earth. This conjecture informs her interest in future research missions to the moon. Which choice completes the text with the most logical and precise word or phrase?",
+    "choices": ["demands", "speculates", "doubts", "establishes"],
+    "answer": "speculates"
+},
+{
+    "question": "Beginning in the 1950s, Navajo Nation legislator Annie Dodge Wauneka continuously worked to promote public health; this _______ effort involved traveling throughout the vast Navajo homeland and writing a medical dictionary for speakers of Diné bizaad, the Navajo language. Which choice completes the text with the most logical and precise word or phrase?",
+    "choices": ["impartial", "offhand", "persistent", "mandatory"],
+    "answer": "persistent",
+    "offline_explain": "existing continuously"
+}
+]
