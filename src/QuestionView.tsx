@@ -3,9 +3,14 @@ import { QuestionContext } from './App';
 import Question from './components/Question';
 import Answer from './components/Answer';
 import MultipleChoice from './components/MultipleChoice';
+import AnswerStatus from './components/AnswerStatus';
 
 function QuestionView() {
-    const state  = useContext(QuestionContext);
+    const context  = useContext(QuestionContext);
+    const { state } = context;
+    const { answerStatus } = state;
+    console.log({answerStatus})
+
   return (
     <div className="QuestionView">
         <div>QuestionView</div>
@@ -13,6 +18,8 @@ function QuestionView() {
         <Answer/>
         <MultipleChoice/>
         {/* {JSON.stringify({state})} */}
+        {/* { answerStatus != "" && <AnswerStatus/>} */}
+        {answerStatus && <AnswerStatus/>}
     </div>
   );
 }
