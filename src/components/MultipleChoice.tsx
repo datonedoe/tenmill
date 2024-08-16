@@ -6,19 +6,26 @@ function MultipleChoice() {
     const { state } = context;
     const { dispatch } = context;
 
+    let correct_answer = "";
+    let choices = [];
+
+
     const {question_index, questions} = state
-    const choices = questions[question_index].choices;
-    const correct_answer = state.questions[question_index].answer;
+
+    if (questions[question_index]) {
+        choices = questions[question_index].choices;
+        correct_answer = state.questions[question_index].answer;
+    }
 
     function handleClick(eachChoice: string, idx: number) {
         console.log({state})
+        dispatch.setQuestionAnswered(true)
         
         if (correct_answer === eachChoice) {
-            dispatch.setAnswerStatus("huh")
-
-            console.log("correct!!");
-            console.log(state.answerStatus)
+            console.log("Correct Answer");
+            dispatch.setAnswerStatus(true)
         } else {
+            console.log("Wrong Answer");
             dispatch.setAnswerStatus(false)
         }
     }
@@ -28,8 +35,8 @@ function MultipleChoice() {
         <br/>
         <div>MultipleChoice</div>
         {choices.map((eachChoice: any, idx: any) => (
-            <div>
-                <button key={idx} onClick={() => handleClick(eachChoice, idx)}>{eachChoice}</button>
+            <div key={idx} >
+                <button onClick={() => handleClick(eachChoice, idx)}>{eachChoice}</button>
             </div>
         ))}
     </div>

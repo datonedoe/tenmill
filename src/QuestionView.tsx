@@ -8,8 +8,9 @@ import AnswerStatus from './components/AnswerStatus';
 function QuestionView() {
     const context  = useContext(QuestionContext);
     const { state } = context;
+    const { questionAnswered } = state;
     const { answerStatus } = state;
-    console.log({answerStatus})
+    console.log({questionAnswered})
 
   return (
     <div className="QuestionView">
@@ -18,8 +19,7 @@ function QuestionView() {
         <Answer/>
         <MultipleChoice/>
         {/* {JSON.stringify({state})} */}
-        {/* { answerStatus != "" && <AnswerStatus/>} */}
-        {answerStatus && <AnswerStatus/>}
+        {questionAnswered && <AnswerStatus answerStatus={answerStatus} />}
     </div>
   );
 }

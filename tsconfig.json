@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "sandbox/z_ignore_App.tsx"  ]
 }
