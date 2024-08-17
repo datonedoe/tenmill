@@ -9,10 +9,18 @@ function AnswerStatus({ answerStatus }: AnswerStatusProps) {
   return (
     <div className="AnswerStatus">
         <div>AnswerStatus</div>
-        <br/>
-        {answerStatus && "Correct Answer!!"}
-        {!answerStatus && "WRONG Answer!!"}
+        <div>
+          <span>
+            {answerStatus && "Correct Answer!!"}
+            {!answerStatus && "WRONG Answer!!"}
 
+          </span>
+          <span>
+            <button>Continue</button>
+          </span>
+        </div>
+        <br/>
+        
     </div>
   );
 }
