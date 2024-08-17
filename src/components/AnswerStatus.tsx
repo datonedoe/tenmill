@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect} from 'react';
 import { QuestionContext } from '../App';
 
 interface AnswerStatusProps {
@@ -7,11 +7,21 @@ interface AnswerStatusProps {
 
 function AnswerStatus({ answerStatus }: AnswerStatusProps) {
   const context  = useContext(QuestionContext);
-  const { dispatch } = context;
+  const { dispatch, state } = context;
+  const { questions, question_index} = state;
   const { setQuetsionIndex } = dispatch;
+  const [ enableNext, setEnableNext ] = useState(true);
+
+  useEffect(() => {
+    if (question_index >= questions.length - 1) {
+      setEnableNext(false)
+    }
+  }, [question_index])
 
   function handleContinue() {
-    setQuetsionIndex((prevIndex: number) =>  prevIndex + 1);
+    if (enableNext) {
+      setQuetsionIndex((prevIndex: number) => prevIndex + 1);
+    }
   }
   return (
     <div className="AnswerStatus">
@@ -32,7 +42,7 @@ function AnswerStatus({ answerStatus }: AnswerStatusProps) {
           </div>
           <div className="flex-auto">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${!enableNext && 'opacity-50 cursor-not-allowed'}`}
               onClick={() => handleContinue()}>
               Continue
             </button>
