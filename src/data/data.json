@@ -9,5 +9,12 @@
     "choices": ["impartial", "offhand", "persistent", "mandatory"],
     "answer": "persistent",
     "offline_explain": "existing continuously"
+},
+{
+    "question": "It was comical in a way, with the dramatic irony of a farcical play. He had studied through the lens of his microscope the waste of germs and infinitesimal parasites- invisible to most- that provoke such majorities of the world’s ___________. And yet, in so focusing his view, he had failed to perceive an affliction that towered before him for fifteen years on that to others was unmistakable.\nWhich of the following choices best completes the text with the most logical word?",
+    "choices": ["Happiness", "Suffering", "Failure", "Calamities"],
+    "answer": "Suffering",
+    "offline_explain": "The character is studying germs and parasites. It is an irony that, though he studies these creatures, he didn’t realize when he himself was “afflicted” with one. It therefore follows that those germs and parasites would create the world’s “suffering” (B). It isn’t (A) as that is the opposite of what the germs and parasites would cause. It isn’t (C) as the world’s failures aren’t caused by germs or parasites.  It isn’t (D) as calamities can be caused by any number of natural disasters and man-made situations in addition to infectious diseases and parasites."
 }
+
 ]
