@@ -32,6 +32,7 @@ function App() {
   const [selectedChoice, setSelectedChoice] = useState("")
   const [questionAnswered, setQuestionAnswered] = useState(false)
   const [answerStatus, setAnswerStatus] = useState(false)
+  const [question_index, setQuetsionIndex] = useState(0);
 
   const dispatch = {
     setSelectedChoice,
@@ -39,6 +40,7 @@ function App() {
     setAnswerStatus,
     setQuestions,
     setIndex,
+    setQuetsionIndex
   }
 
   const state = {
@@ -46,7 +48,7 @@ function App() {
       index,
       selectedChoice, 
       questionAnswered,
-      question_index: 0,
+      question_index,
       answerStatus,
   };
 
