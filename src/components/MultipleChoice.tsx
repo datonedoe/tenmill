@@ -18,16 +18,7 @@ function MultipleChoice() {
     }
 
     function handleClick(eachChoice: string, idx: number) {
-        console.log({state})
-        dispatch.setQuestionAnswered(true)
-        
-        if (correct_answer === eachChoice) {
-            console.log("Correct Answer");
-            dispatch.setAnswerStatus(true)
-        } else {
-            console.log("Wrong Answer");
-            dispatch.setAnswerStatus(false)
-        }
+        dispatch.setSelectedChoice(eachChoice);
     }
 
   return (

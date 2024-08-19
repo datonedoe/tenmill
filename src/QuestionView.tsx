@@ -3,7 +3,7 @@ import { QuestionContext } from './App';
 import Question from './components/Question';
 import Answer from './components/Answer';
 import MultipleChoice from './components/MultipleChoice';
-import AnswerStatus from './components/AnswerStatus';
+import AnswerNav from './components/AnswerNav';
 import QuestionSetProgressBar from './components/QuestionSetProgressBar'; // Import the QuestionSetProgressBar component with correct file path
 
 function QuestionView() {
@@ -21,7 +21,7 @@ function QuestionView() {
         <Answer/>
         <MultipleChoice/>
         {/* {JSON.stringify({state})} */}
-        {questionAnswered && <AnswerStatus answerStatus={answerStatus} />}
+        <AnswerNav answerStatus={answerStatus} />
     </div>
   );
 }
