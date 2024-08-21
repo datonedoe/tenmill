@@ -45,31 +45,37 @@ function AnswerNav({ answerStatus }: AnswerNavProps) {
           <div className="flex-auto py-2 px-4 rounded">
             <button className='bg-blue-500  py-2 px-4 rounded'>Skip</button>
           </div>
+          
+
+          {questionAnswered && <div className="flex-auto">
+              {answerStatus ? 
+              <span className='bg-green-400'>Correct!</span> :
+              <span className='bg-red-500'>Wrong</span>
+              }
+
+          </div>
+          }
+
           <div className="flex-auto">
             <button 
               className='bg-blue-500 py-2 px-4 rounded'
               onClick={checkAnswer}>Check</button>
           </div>
-        </div>
-        
-        <div className="flex bg-teal-500 rounded">
-        {questionAnswered && <div className="flex-auto">
-            {answerStatus ? 
-              <span className='bg-green-400'>Correct!</span> :
-              <span className='bg-red-500'>Wrong</span>
-            }
 
-          </div>
-          }
-          
           <div className="flex-auto">
             <button
               className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${!enableNext && 'opacity-50 cursor-not-allowed'}`}
               onClick={() => handleContinue()}>
               Continue
             </button>
-          </div>
         </div>
+        </div>
+        
+        
+        {/* <div className="flex bg-teal-500 rounded">
+          
+        
+        </div> */}
         <br/>
         
     </div>

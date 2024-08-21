@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { QuestionContext } from '../App';
 
 function MultipleChoice() {
     const context  = useContext(QuestionContext);
     const { state } = context;
+    const { selectedChoice } = state;
     const { dispatch } = context;
 
     let correct_answer = "";
@@ -21,13 +22,20 @@ function MultipleChoice() {
         dispatch.setSelectedChoice(eachChoice);
     }
 
+    function selected(eachChoice: string) {
+        return selectedChoice === eachChoice ? 'bg-blue-900 text-white' : ''; 
+    }
+
+
   return (
     <div className="MultipleChoice">
         <br/>
         <div>MultipleChoice</div>
         {choices.map((eachChoice: any, idx: any) => (
             <div key={idx} >
-                <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded my-2" onClick={() => handleClick(eachChoice, idx)}>{eachChoice}</button>
+                <button
+                    className={`bg-transparent ${selected(eachChoice)}  text-blue-700 font-semibold  py-2 px-4 border border-blue-500  rounded my-2`}
+                    onClick={() => handleClick(eachChoice, idx)}>{eachChoice}</button>
             </div>
         ))}
     </div>
