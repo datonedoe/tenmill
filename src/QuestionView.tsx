@@ -5,6 +5,7 @@ import Answer from './components/Answer';
 import MultipleChoice from './components/MultipleChoice';
 import AnswerNav from './components/AnswerNav';
 import QuestionSetProgressBar from './components/QuestionSetProgressBar'; // Import the QuestionSetProgressBar component with correct file path
+import QuestionSetProgressComment from './components/QuestionSetProgressComment';
 
 function QuestionView() {
     const context  = useContext(QuestionContext);
@@ -16,6 +17,7 @@ function QuestionView() {
   return (
     <div className="QuestionView">
         <div>QuestionView</div>
+        <QuestionSetProgressComment/>
         <QuestionSetProgressBar/>
         <Question/>
         <Answer/>

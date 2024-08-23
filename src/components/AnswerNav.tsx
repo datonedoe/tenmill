@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect} from 'react';
 import { QuestionContext } from '../App';
+import classNames from 'classnames';
 
 interface AnswerNavProps {
   answerStatus: boolean; // Replace 'any' with the appropriate type if available
@@ -8,8 +9,16 @@ interface AnswerNavProps {
 function AnswerNav({ answerStatus }: AnswerNavProps) {
   const context  = useContext(QuestionContext);
   const { dispatch, state } = context;
-  const { questions, question_index, questionAnswered} = state;
+  const { questions, question_index, questionAnswered, selectedChoice} = state;
   const [ enableNext, setEnableNext ] = useState(true);
+
+  const checkBtnClass = classNames('CheckBtn flex-auto', {
+     "opacity-50 cursor-not-allowed": selectedChoice == "",
+  })
+
+  const continueBtnClass = classNames('ContinueBtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ', {
+    // 'opacity-50 cursor-not-allowed': !enableNext, 
+  });
 
   useEffect(() => {
     if (question_index >= questions.length - 1) {
@@ -25,6 +34,8 @@ function AnswerNav({ answerStatus }: AnswerNavProps) {
       setAnswerStatus(false);
       setSelectedChoice("");
       setQuestionAnswered(false);
+    } else {
+      console.log('End of questions');
     }
   }
 
@@ -38,13 +49,23 @@ function AnswerNav({ answerStatus }: AnswerNavProps) {
       dispatch.setAnswerStatus(false);
     }
   }
+
+  function skipAnswer() {
+    console.log('skipAnswer');
+    handleContinue();
+  }
+
   return (
     <div className="AnswerNav">
-        <div className="text-2xl font-bold">AnswerNav</div>
         <div className="flex">
+          {!questionAnswered && 
           <div className="flex-auto py-2 px-4 rounded">
-            <button className='bg-blue-500  py-2 px-4 rounded'>Skip</button>
+            <button
+              // className='bg-blue-500  py-2 px-4 rounded'
+              className={continueBtnClass}
+              onClick={() => skipAnswer()}>Skip</button>
           </div>
+          }
           
 
           {questionAnswered && <div className="flex-auto">
@@ -55,27 +76,24 @@ function AnswerNav({ answerStatus }: AnswerNavProps) {
 
           </div>
           }
-
-          <div className="flex-auto">
+          {!questionAnswered &&<div className={checkBtnClass}>
             <button 
               className='bg-blue-500 py-2 px-4 rounded'
               onClick={checkAnswer}>Check</button>
           </div>
+          }
+          
 
-          <div className="flex-auto">
+          {questionAnswered && <div className="flex-auto">
             <button
-              className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${!enableNext && 'opacity-50 cursor-not-allowed'}`}
+              className={continueBtnClass}
               onClick={() => handleContinue()}>
               Continue
             </button>
+          </div>
+          }
         </div>
-        </div>
-        
-        
-        {/* <div className="flex bg-teal-500 rounded">
-          
-        
-        </div> */}
+
         <br/>
         
     </div>

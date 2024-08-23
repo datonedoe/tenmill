@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { QuestionContext } from '../App';
+import classNames from 'classnames';
 
 function MultipleChoice() {
     const context  = useContext(QuestionContext);
@@ -11,7 +12,12 @@ function MultipleChoice() {
     let choices = [];
 
 
-    const {question_index, questions} = state
+    const {question_index, questions, questionAnswered} = state
+
+    const multipleChoiceClasses = classNames('MultipleChoice',{
+        'pointer-events-none opacity-30': questionAnswered,
+    });
+
 
     if (questions[question_index]) {
         choices = questions[question_index].choices;
@@ -23,12 +29,14 @@ function MultipleChoice() {
     }
 
     function selected(eachChoice: string) {
-        return selectedChoice === eachChoice ? 'bg-blue-900 text-white' : ''; 
+        return selectedChoice === eachChoice ? 'bg-yellow-400 text-white' : ''; 
     }
 
 
+
   return (
-    <div className="MultipleChoice">
+    
+    <div className={multipleChoiceClasses}>
         <br/>
         <div>MultipleChoice</div>
         {choices.map((eachChoice: any, idx: any) => (
