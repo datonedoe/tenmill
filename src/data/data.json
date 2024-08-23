@@ -15,6 +15,24 @@
     "choices": ["Happiness", "Suffering", "Failure", "Calamities"],
     "answer": "Suffering",
     "offline_explain": "The character is studying germs and parasites. It is an irony that, though he studies these creatures, he didn’t realize when he himself was “afflicted” with one. It therefore follows that those germs and parasites would create the world’s “suffering” (B). It isn’t (A) as that is the opposite of what the germs and parasites would cause. It isn’t (C) as the world’s failures aren’t caused by germs or parasites.  It isn’t (D) as calamities can be caused by any number of natural disasters and man-made situations in addition to infectious diseases and parasites."
+},
+{
+    "question": "In the field of astronomy, a _______ is a celestial body that orbits around a planet or a minor planet that orbits around a star. Which choice completes the text with the most logical and precise word or phrase?",
+    "choices": ["comet", "meteor", "asteroid", "satellite"],
+    "answer": "satellite",
+    "offline_explain": "none"
+},
+{
+    "question": "The concept of _______ refers to the ability of an object to float in a fluid, whether it is a liquid or a gas. Which choice completes the text with the most logical and precise word or phrase?",
+    "choices": ["buoyancy", "density", "viscosity", "pressure"],
+    "answer": "buoyancy",
+    "offline_explain": "none"
+},
+{
+    "question": "The _______ is a programming language commonly used for web development. It is known for its simplicity and ease of use. Which choice completes the text with the most logical and precise word or phrase?",
+    "choices": ["Python", "JavaScript", "Java", "C++"],
+    "answer": "JavaScript",
+    "offline_explain": "none"
 }
 
 ]
