@@ -1,16 +1,19 @@
 import React, { useContext, useState, useEffect} from 'react';
-import { QuestionContext } from '../App';
+import { QuestionContext, ViewContext } from '../App';
 import classNames from 'classnames';
+import { ViewType } from '../enum';
 
-interface AnswerNavProps {
+interface ViewNavProps {
   answerStatus: boolean; // Replace 'any' with the appropriate type if available
 }
 
-function AnswerNav({ answerStatus }: AnswerNavProps) {
-  const context  = useContext(QuestionContext);
-  const { dispatch, state } = context;
+function ViewNav({ answerStatus }: ViewNavProps) {
+  const question_context  = useContext(QuestionContext);
+  const view_context = useContext(ViewContext);
+  const { dispatch, state } = question_context;
   const { questions, question_index, questionAnswered, selectedChoice} = state;
   const [ enableNext, setEnableNext ] = useState(true);
+  // const { dispatch: setView } = view_context;
 
   const checkBtnClass = classNames('CheckBtn flex-auto', {
      "opacity-50 cursor-not-allowed": selectedChoice == "",
@@ -21,6 +24,7 @@ function AnswerNav({ answerStatus }: AnswerNavProps) {
   });
 
   useEffect(() => {
+    
     if (question_index >= questions.length - 1) {
       setEnableNext(false)
     }
@@ -36,6 +40,7 @@ function AnswerNav({ answerStatus }: AnswerNavProps) {
       setQuestionAnswered(false);
     } else {
       console.log('End of questions');
+      // setView(ViewType.LESSON_QUESTION);
     }
   }
 
@@ -56,7 +61,7 @@ function AnswerNav({ answerStatus }: AnswerNavProps) {
   }
 
   return (
-    <div className="AnswerNav">
+    <div className="ViewNav">
         <div className="flex">
           {!questionAnswered && 
           <div className="flex-auto py-2 px-4 rounded">
@@ -100,4 +105,4 @@ function AnswerNav({ answerStatus }: AnswerNavProps) {
   );
 }
 
-export default AnswerNav;
+export default ViewNav;

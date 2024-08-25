@@ -1,17 +1,8 @@
 import React, {useState, createContext, useContext} from 'react';
 import './App.css';
-import QuestionView from './QuestionView';
+import AppView from './AppView';
 import question_data from './data/data.json';
-
-// Initial dispatchers
-// let dispatch: any  = {}
-// // dispatch.setSelectedChoice = (value:string) => {
-// // }
-// // dispatch.setQuestionAnswered = (value: boolean) => {
-// // }
-
-// // Initial state values
-// let state: any = {}
+import { ViewType } from './enum';
 
 interface Context {
   dispatch: any,
@@ -23,9 +14,10 @@ let context: Context = {
     dispatch: {}
 };
 export const QuestionContext = createContext(context);
+export const ViewContext = createContext(context);
 
 function App() {
-  context  = useContext(QuestionContext);
+  let question_context  = useContext(QuestionContext);
 
   const [questions, setQuestions] = useState(question_data);
   const [index, setIndex] = useState(0)
@@ -34,7 +26,7 @@ function App() {
   const [answerStatus, setAnswerStatus] = useState(false)
   const [question_index, setQuetsionIndex] = useState(0);
 
-  const dispatch = {
+  const question_dispatch = {
     setSelectedChoice,
     setQuestionAnswered,
     setAnswerStatus,
@@ -43,7 +35,7 @@ function App() {
     setQuetsionIndex
   }
 
-  const state = {
+  const question_state = {
       questions,
       index,
       selectedChoice, 
@@ -52,19 +44,28 @@ function App() {
       answerStatus,
   };
 
+  question_context.dispatch = question_dispatch;
+  question_context.state = question_state;
 
-  context.dispatch = dispatch;
-  context.state = state;
+
+  // const [view, setView] = useState(ViewType.LESSON_QUESTION)
+  // const view_context = useContext(ViewContext)
+
+  // view_context.state = {view}
+  // view_context.dispatch = {setView}
 
 
   return (
-    <QuestionContext.Provider value={context}> 
-      <div className="App">
-        <header className="App-header">
-          <QuestionView/>
-        </header>
-      </div>
+    <QuestionContext.Provider value={question_context}> 
+      {/* <ViewContext.Provider value={view_context}> */}
+        <div className="App">
+          <header className="App-header">
+            <AppView/>
+          </header>
+        </div>
+      {/* </ViewContext.Provider> */}
     </QuestionContext.Provider>
+
   );
 }
 
