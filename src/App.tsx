@@ -9,12 +9,17 @@ interface Context {
   state: any
 }
 
-let context: Context = {
+let question_context: Context = {
     state: {},
     dispatch: {}
 };
-export const QuestionContext = createContext(context);
-export const ViewContext = createContext(context);
+
+let view_context: Context = {
+  state: {},
+  dispatch: {}
+}
+export const QuestionContext = createContext(question_context);
+export const ViewContext = createContext(view_context);
 
 function App() {
   let question_context  = useContext(QuestionContext);
@@ -48,11 +53,13 @@ function App() {
   question_context.state = question_state;
 
 
-  // const [view, setView] = useState(ViewType.LESSON_QUESTION)
-  // const view_context = useContext(ViewContext)
+  const [view, setView] = useState(ViewType.LESSON_QUESTION)
+  console.log({view})
+  const view_context = useContext(ViewContext)
 
-  // view_context.state = {view}
-  // view_context.dispatch = {setView}
+  const view_context_state = {view}
+  view_context.dispatch = {setView}
+  view_context.state = {view}
 
 
   return (

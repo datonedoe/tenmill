@@ -13,7 +13,8 @@ function ViewNav({ answerStatus }: ViewNavProps) {
   const { dispatch, state } = question_context;
   const { questions, question_index, questionAnswered, selectedChoice} = state;
   const [ enableNext, setEnableNext ] = useState(true);
-  // const { dispatch: setView } = view_context;
+  const { dispatch: view_dispatch } = view_context;
+  const { setView } = view_dispatch;
 
   const checkBtnClass = classNames('CheckBtn flex-auto', {
      "opacity-50 cursor-not-allowed": selectedChoice == "",
@@ -40,7 +41,7 @@ function ViewNav({ answerStatus }: ViewNavProps) {
       setQuestionAnswered(false);
     } else {
       console.log('End of questions');
-      // setView(ViewType.LESSON_QUESTION);
+      setView(ViewType.RESULT);
     }
   }
 

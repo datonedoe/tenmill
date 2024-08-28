@@ -10,24 +10,28 @@ import ResultView from './view/ResultView';
 import { ViewType } from './enum';
 
 function AppView() {
-    const context  = useContext(QuestionContext);
+    const question_context  = useContext(QuestionContext);
     const view_context  = useContext(ViewContext);
-    const { state } = context;
+    const { state } = question_context;
     const { answerStatus } = state;
 
-    const { state: view } = view_context;
+    const { state: view_state } = view_context;
+    console.log({view_state});
+    const { view } = view_state;
 
   return (
     <div className="AppView">
-      {/* {view === ViewType.LESSON_QUESTION &&  <> */}
-          <QuestionSetProgressComment/>
-          <QuestionSetProgressBar/>
+      {view === ViewType.LESSON_QUESTION && <QuestionSetProgressComment/>}
+      
+      <QuestionSetProgressBar/>
+
+      {view === ViewType.LESSON_QUESTION &&  <div>
           <Question/>
           <Answer/>
           <MultipleChoice/>
-      {/* </>} */}
+    </div>}
       
-      {/* {view === ViewType.RESULT &&  <ResultView/>} */}
+      {view === ViewType.RESULT &&  <ResultView/>}
           
       <ViewNav answerStatus={answerStatus} />
     </div>
