@@ -17,7 +17,7 @@ function ViewNav({ answerStatus }: ViewNavProps) {
   const { setView } = view_dispatch;
 
   const checkBtnClass = classNames('CheckBtn flex-auto', {
-     "opacity-50 cursor-not-allowed": selectedChoice == "",
+     "opacity-50 cursor-not-allowed pointer-events-none": selectedChoice == "",
   })
 
   const continueBtnClass = classNames('ContinueBtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ', {
