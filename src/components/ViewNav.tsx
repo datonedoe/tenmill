@@ -34,8 +34,9 @@ function ViewNav({ answerStatus }: ViewNavProps) {
   function handleContinue() {
   const { setQuetsionIndex, setAnswerStatus, setSelectedChoice, setQuestionAnswered} = dispatch;
 
+    setQuetsionIndex((prevIndex: number) => prevIndex + 1);
+    
     if (enableNext) {
-      setQuetsionIndex((prevIndex: number) => prevIndex + 1);
       setAnswerStatus(false);
       setSelectedChoice("");
       setQuestionAnswered(false);
